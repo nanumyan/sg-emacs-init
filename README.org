@@ -2,6 +2,10 @@
 * Introduction
 Open Emacs, type =Alt+x help=, hit ENTER, then =t= (Emacs notation for the same would be =M-x  help RET t=) to start the built-in tutorial.
 
+* Your settings
+* Installation
+To install the latest Emacs, version 24.4, follow this tutorial:
+
 * Structure
 There are two main methods for Emacs customization.
 One is by writing /Emacs Lisp/ code in =$HOME/.emacs= file and the other is using /Customize/, a built in graphical functionality.
@@ -29,11 +33,55 @@ I will have all my customization in =$HOME/.emacs.d/sg_init/= directory.
 The best way to install a package is from within Emacs through a package repository.
 There are three main repositories. The default GNU repository (/ELPA/),  /MELPA/ and /Marmalade/.
 
-** TODO Built-in but outdated? (like org)
+* Visual appearance
 
-* Custom key bindings
+** Fonts
+I use two fonts, one variable width and one fixed width for code:
+1. Noto Sans
+2. Droid Sans Mono
+
+Get them here:
+http://www.google.com/fonts/
+
+To install these system wise, extract the downloaded ZIP archives into
+: /usr/share/fonts
+and then run
+#+BEGIN_SRC sh
+  sudo fc-cache -f
+#+END_SRC
+
+To install it locally (say, if you don't have sudo access), put the fonts in
+: ~/.fonts
+and then do
+#+BEGIN_SRC sh
+  fc-cache -f
+#+END_SRC
+Note, that you may need to create that folder first.
+
+** Whiteroom for distraction free writing
+Just press =F9= to see it
+
+** Workgroups2 and desktop
+For having multiple window setups (e.g. Org with agenda,  Python IDE,  R IDE) and restoring the buffers automatically.
+
+*** TODO add an =.emacs_workgroups= to the repo
+* TODO Custom key bindings
++ =C-<scroll>= :: change font style
++ =S-<scroll>= :: change font size
++ =F9= :: writeroom
++ =F11= :: toggle fullscreen (Emacs 24.4)
++ =M-q= :: toggle line wrapping
++ =C-x <arrows> :: move between Emacs windows (splits of the Emacs window)
++ ... :: ...
 
 * Org-mode
+
+** TODO Export to LaTeX
+The SG styles for manuscripts and Beamer presentations are set up.
+It is set up to run the necessary LaTeX, BibTeX sequence with the help of =rubber=.
+You can install it with
+: sudo apt-get install rubber
+Otherwise, you can customize it to use =latexmk=, that you probably have shipped with the \TeX distribution
 
 ** Org-gcal
 Taken from https://github.com/myuhe/org-gcal.el
@@ -76,5 +124,7 @@ Taken from https://github.com/myuhe/org-gcal.el
                             ("another-mail@gmail.com" .  "~/task.org")))
 #+end_src
 
-* stuff
- C-x d /ssh:login@machine.com:/home/
+* Miscellaneous
+- You can seamlessly work remotely with TRAMP e.g. like this
+  :  C-x d /ssh:yname@machine.com:/home/yname
+ 

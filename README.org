@@ -2,7 +2,9 @@
 * Introduction
 Open Emacs, type =Alt+x help=, hit ENTER, then =t= (Emacs notation for the same would be =M-x  help RET t=) to start the built-in tutorial.
 
-* Your settings
+* TODO Your settings
+...
+
 * Installation
 To install the latest Emacs, version 24.4, follow this tutorial:
 http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/
@@ -33,6 +35,9 @@ I will have all my customization in =$HOME/.emacs.d/sg_init/= directory.
 * Loading packages
 The best way to install a package is from within Emacs through a package repository.
 There are three main repositories. The default GNU repository (/ELPA/),  /MELPA/ and /Marmalade/.
+
+To keep this setup easily reproducible, if you install packages at some point, add them into the list in =loadpackages.el=.
+This way the next time you setup an Emacs , it will be installed automatically.
 
 * Visual appearance
 

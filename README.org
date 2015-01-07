@@ -1,0 +1,80 @@
+
+* Introduction
+Open Emacs, type =Alt+x help=, hit ENTER, then =t= (Emacs notation for the same would be =M-x  help RET t=) to start the built-in tutorial.
+
+* Structure
+There are two main methods for Emacs customization.
+One is by writing /Emacs Lisp/ code in =$HOME/.emacs= file and the other is using /Customize/, a built in graphical functionality.
+Choosing Customize may seem the easy way as it is more conventional, but in the long run the manual approach is preferable for the following reasons:
+- not all variables can be customized through Customize
+- no way to define and use own functions with Customize
+- any solution for any question is posted as Emacs Lisp code by the community, that you copy, paste  into your =.emacs= file
+- ready Emacs Lisp solutions for virtually any purpose
+
+Emacs is extensible through packages. Many are a part of the Emacs distribution, but an ample of them is offered by the community and can be installed separately.
+In a nutshell, installing a package is putting in a place where Emacs sees it.
+By default it is =$HOME/.emacs.d/= directory.
+
+Because of flexibility of Emacs, =.emacs= file tends to grow in time and at some point becomes very messy.
+A good practice to organize it is splitting it into multiple file.
+I will have all my customization in =$HOME/.emacs.d/sg_init/= directory.
+
+- =loadpackages.el= :: file has the list of needed packages and installs them if they are not installed
+- =visuals.el= :: has the customization of how emacs looks, i.e. color themes, nicer mode line, fonts.
+- =keybindings.el= :: try to guess
+- =misc.el= :: small global tweaks like making the mini buffer smarter, adding functionality to Dired (the file manager), automatic line wrapping, etc.
+- =<mode>settings.el= :: a set of files customizing a certain <mode>, like Org, \LaTeX, Python, etc.
+
+* Loading packages
+The best way to install a package is from within Emacs through a package repository.
+There are three main repositories. The default GNU repository (/ELPA/),  /MELPA/ and /Marmalade/.
+
+** TODO Built-in but outdated? (like org)
+
+* Custom key bindings
+
+* Org-mode
+
+** Org-gcal
+Taken from https://github.com/myuhe/org-gcal.el
+
+1. Go to [[https://console.developers.google.com/project][Google Developers Console]]
+
+2. Create a project (with any name)
+
+3. Click on the project
+
+4. Click on *APIs & Auth* then *Credentials*
+
+5. Click on *Create New Client ID* with Application type /Installed application/, Installed application type /Other/
+
+6. Click on *Create Client ID*
+
+7. Record the Client ID and Client secret for setup.
+
+8. Under the same *APIs & Auth* menu section, select *APIs*
+
+9. Scroll down to *Calendar API*. Click the *Status* button to enable calendar API access to the app you created in steps 5 & 6.
+
+   Go to [[https://www.google.com/calendar/render][Google setting page]] to check the calendar ID.
+
+10. Go to [[https://www.google.com/calendar/render][Google setting page]] and click the gear-shaped settings icon in the upper right, then select "Settings" from the drop down list.
+
+11. Select the "Calendars" tab, which will display a list of your calendars.
+
+12. Select the calendar you would like to synchronize with. This will take you to the "Calendar Details" page for that calendar. Near the end is a section titled "Calendar Address". Following the XML, ICAL, and HTML tags, you will see your Calendar ID.
+
+13. Copy the Calendar ID for use in the settings below, where you will use it as the first element in the org-gcal-file-alist for associating calendars with specific org files. You can associate different calendars with different org files, so repeat this for each calendar you want to use.
+
+*** Setting example
+
+#+begin_src elisp
+(require 'org-gcal)
+(setq org-gcal-client-id "your-id-foo.apps.googleusercontent.com"
+      org-gcal-client-secret "your-secret"
+      org-gcal-file-alist '(("your-mail@gmail.com" .  "~/schedule.org")
+                            ("another-mail@gmail.com" .  "~/task.org")))
+#+end_src
+
+* stuff
+ C-x d /ssh:login@machine.com:/home/

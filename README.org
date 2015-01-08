@@ -137,10 +137,10 @@ Thanks to [[http://tex.stackexchange.com/a/118491][SyncTeX]], the LaTeX source i
   If you write one line per sentence, clickiing on body text will bring you to the beginning of the corresponding sentence.
 
 For the above to work, you need to setup Okular as follows
-1.) Open Okular and go to...
-2.) Settings -> Configure Okular -> Editor
-3.) Set Editor to "Emacs client"
-4.) Command should automatically set to:
+1. Open Okular and go to...
+2. Settings -> Configure Okular -> Editor
+3. Set Editor to "Emacs client"
+4. Command should automatically set to:
 : emacsclient -a emacs --no-wait +%l %f
 
 * Miscellaneous

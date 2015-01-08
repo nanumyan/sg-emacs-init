@@ -92,11 +92,9 @@ For having multiple window setups (e.g. Org with agenda,  Python IDE,  R IDE) an
 
 ** TODO Defaults
 Agenda directories, etc
-Right ow, it is
+Right now it is
 #+BEGIN_EXAMPLE
   ~/ORG
-  ~/SG/ORG
-  ~/SG/ORG/research
 #+END_EXAMPLE
 To change these, edit the =orgsettings.el= file
 

@@ -47,10 +47,9 @@
       "~/ORG")
 
 (setq org-agenda-files
-      '("~/ORG"
-	"~/SG"
-	"~/SG/ORG/"
-	"~/SG/ORG/research"))
+      '(
+	"~/ORG"
+	))
 
 (setq org-default-notes-file
       "~/ORG/notes.org")
@@ -189,7 +188,7 @@
 
 (setq org-link-abbrev-alist
       '(("bib" . "rtcite:~/SG/bibliography.bib::%s")
-	("notes" . "rtcite:~/SG/ORG/sg_refnotes.org::#%s")
+	("notes" . "rtcite:~/ORG/sg_refnotes.org::#%s")
 	("papers" . "~/SG/papers/%s.pdf")
 	("google" . "http://www.google.com/search?q=%s")))
 

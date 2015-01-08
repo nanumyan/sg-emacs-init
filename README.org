@@ -128,8 +128,20 @@ Taken from https://github.com/myuhe/org-gcal.el:
 12. Select the calendar you would like to synchronize with. This will take you to the "Calendar Details" page for that calendar. Near the end is a section titled "Calendar Address". Following the XML, ICAL, and HTML tags, you will see your Calendar ID.
 13. Copy the Calendar ID for use in the settings below, where you will use it as the first element in the org-gcal-file-alist for associating calendars with specific org files. You can associate different calendars with different org files, so repeat this for each calendar you want to use.
 
+** TODO describe literature management with RefTeX
 
-** TODO describe literature management with RefTeX 
+* LaTeX
+Thanks to [[http://tex.stackexchange.com/a/118491][SyncTeX]], the LaTeX source in your Emacs and the PDF output in Okular are synchronized.
+- If you want to see how what you are working on looks like on pdf, just =View=  (=C-c C-c v RET=) while on the coresponding line of code.
+- To go to the source from PDF, =Shift + <left click>= on the place you want to investigate.
+  If you write one line per sentence, clickiing on body text will bring you to the beginning of the corresponding sentence.
+
+For the above to work, you need to setup Okular as follows
+1.) Open Okular and go to...
+2.) Settings -> Configure Okular -> Editor
+3.) Set Editor to "Emacs client"
+4.) Command should automatically set to:
+: emacsclient -a emacs --no-wait +%l %f
 
 * Miscellaneous
 - You can seamlessly work remotely with TRAMP e.g. like this

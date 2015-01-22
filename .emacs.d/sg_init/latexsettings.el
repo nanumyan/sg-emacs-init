@@ -55,7 +55,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autocomplete for LaTeX
-(add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of `latex-mode`
+;(add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of `latex-mode`
 
 (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
   (setq ac-sources
@@ -64,3 +64,20 @@
 
 (add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
 (ac-flyspell-workaround)
+
+;;; BRACES
+(electric-pair-mode)
+(add-hook 'LaTeX-mode-hook
+              (lambda ()
+                (define-key LaTeX-mode-map "\"" 'electric-pair)
+                (define-key LaTeX-mode-map "\'" 'electric-pair)
+                (define-key LaTeX-mode-map "(" 'electric-pair)
+                (define-key LaTeX-mode-map "[" 'electric-pair)
+                (define-key LaTeX-mode-map "{" 'electric-pair)
+                (define-key LaTeX-mode-map "$" 'electric-pair)))
+(add-hook 'LaTeX-mode-hook
+          '(lambda ()
+            (define-key LaTeX-mode-map (kbd "$") 'self-insert-command)))
+
+(require 'cdlatex)
+(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)

@@ -6,6 +6,7 @@
 
 (require 'org-ac)
 (org-ac/config-default)
+(add-to-list 'ac-modes 'org-mode)
 
 ;; Nice bullets
 (require 'org-bullets)
@@ -47,9 +48,10 @@
       "~/ORG")
 
 (setq org-agenda-files
-      '(
-	"~/ORG"
-	))
+      '("~/ORG"
+	"~/SG"
+	"~/SG/ORG/"
+	"~/SG/ORG/research"))
 
 (setq org-default-notes-file
       "~/ORG/notes.org")
@@ -70,6 +72,8 @@
 
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
 (add-hook 'org-mode-hook 'org-display-inline-images)
+
+(setq org-babel-use-quick-and-dirty-noweb-expansion t)
 
 ;; Block header defaults
 (setq org-babel-default-header-args
@@ -94,7 +98,14 @@
 (add-to-list 'org-latex-classes
 	     '("ethpaper"
 	       "\\documentclass{ETHpaper}
-\\reference{Version of \today}"
+                [NO-DEFAULT-PACKAGES]
+                [PACKAGES]
+                [EXTRA]
+
+\\usepackage{./codestyle}
+\\usepackage{./special_commands}
+\\lstset{style=python}
+\\reference{Version of \\today}"
 	       ("\\section{%s}" . "\\section*{%s}")
 	       ("\\subsection{%s}" . "\\subsection*{%s}")
 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -114,29 +125,44 @@
 {\\footnotesize %\\tiny 
 \\insertnote}}
 \\setbeamertemplate{navigation symbols}{}
+                [NO-DEFAULT-PACKAGES]                
+                [PACKAGES]
+% \\usepackage{kmath}
+\\usepackage{eulervm}
 
 \\institute{Chair of Systems Design}
-\\newcommand{\\place}{}
-\\newcommand{\\homepage}{{www.sg.ethz.ch}}
-\\newcommand{\\shorttitle}{}
-\\usepackage{kmath}
-\\usepackage{eulervm}
-                [NO-DEFAULT-PACKAGES]
-                [PACKAGES]
-                [EXTRA]
+\\newcommand{\\place}{place}
+\\newcommand{\\homepage}{www.sg.ethz.ch}
+\\newcommand{\\shorttitle}{shorttitle}
+\\newcommand{\\collaborators}{collaborators} 
+\\newcommand{\\event}{Agent-based Modelling of Social Systems}
+\\newcommand{\\coursepage}{\\footnotesize \\url{{http://www.sg.ethz.ch/teaching}}}
 
 \\usetikzlibrary{calc,3d}
-\\usetikzlibrary{decorations.pathreplacing}"
+\\usetikzlibrary{decorations.pathreplacing}
+                [EXTRA]"
                ("\\section\{%s\}" . "\\section*\{%s\}")
                ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
                ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+
+(defun beamer-bold (contents backend info)
+  (when (eq backend 'beamer)
+    (replace-regexp-in-string "\\`\\\\[A-Za-z0-9]+" "\\\\textbf" contents)))
+
+(defun beamer-red (contents backend info)
+  (when (eq backend 'beamer)
+    (replace-regexp-in-string "\\`\\\\[A-Za-z0-9]+" "\\\\alert" contents)))
+
+(add-to-list 'org-export-filter-bold-functions 'beamer-bold)
+(add-to-list 'org-export-filter-underline-functions 'beamer-red)
+
 
 (add-to-list 'org-beamer-environments-extra
              '("onlyenv" "O" "\\begin{onlyenv}%a" "\\end{onlyenv}"))
 
 (setq org-latex-pdf-process
-      '("rubber -d --into %o %f"))
-;'("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
+;      '("rubber -d --into %o %f"))
+      '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
 
 
 ;;; Setup RefTEX to work  with Org-mode
@@ -173,7 +199,7 @@
 	    (?t . "%t")
 	    (?l . "(%a, %y)")
 	    (?c . "/%t/ (%a, %y)")
-	    (?h . "** %t\n   :PROPERTIES:\n   :Custom_ID: %l\n   :END:\n   [[papers:%l][%l-paper]]")))))
+	    (?h . "** TOREAD %t\n   :PROPERTIES:\n   :Custom_ID: %l\n   :END:\n   [[papers:%l][%l-paper]]")))))
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   (define-key org-mode-map (kbd "C-c (") 'org-mode-reftex-search))
 
@@ -188,7 +214,7 @@
 
 (setq org-link-abbrev-alist
       '(("bib" . "rtcite:~/SG/bibliography.bib::%s")
-	("notes" . "rtcite:~/ORG/sg_refnotes.org::#%s")
+	("notes" . "rtcite:~/SG/ORG/sg_refnotes.org::#%s")
 	("papers" . "~/SG/papers/%s.pdf")
 	("google" . "http://www.google.com/search?q=%s")))
 

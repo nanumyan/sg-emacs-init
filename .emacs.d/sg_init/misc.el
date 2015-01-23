@@ -9,6 +9,8 @@
 (setq hebrew-holidays nil)
 (setq islamic-holidays nil)
 
+(setq european-calendar-style 't)
+
 ;; Ensure ibuffer opens with point at the current buffer's entry.
 (defadvice ibuffer
   (around ibuffer-point-to-most-recent) ()
@@ -65,3 +67,6 @@
 )
 
 
+;; PS printing options
+(setq ps-paper-type (quote a4))
+(setq ps-print-color-p nil)

@@ -32,59 +32,8 @@
 ;; LaTeX settings
 (load "latexsettings")
 
-
-
-
-
-;;;;;;;;;;;; el-get FOR INSTALLING PACKAGES
-;(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-;(unless (require 'el-get nil 'noerror)
-;  (with-current-buffer
-;      (url-retrieve-synchronously
-;       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-;    (let (el-get-master-branch)
-;      (goto-char (point-max))
-;      (eval-print-last-sexp))))
-;(el-get 'sync)
-
-
-;;;; autoindent
-;;(add-hook 'lisp-mode-hook '(lambda ()
-;;  (local-set-key (kbd "RET") 'newline-and-indent)))
-;(electric-indent-mode 1)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;
-;;;;   PYTHON
-(require 'python)
-
-;;;;; Jedi
-;(add-hook 'python-mode-hook 'auto-complete-mode)
-;(add-hook 'python-mode-hook 'jedi:ac-setup)
-;(add-hook 'python-mode-hook 'jedi:setup)
-;(setq jedi:complete-on-dot t)
-;(eval-after-load "python-mode"
-;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
-;(add-hook 'jedi-mode-hook 'jedi-direx:setup)
-
-;;;;; Flycheck
-;(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;;;;; Automatic bracket matching
-;(require 'autopair)
-;(autopair-global-mode) ;; to enable in all buffers
-
-
-
-;; Enter key executes newline-and-indent
-(defun set-newline-and-indent ()
-  "Map the return key with `newline-and-indent'"
-  (local-set-key (kbd "RET") 'newline-and-indent))
-(add-hook 'org-mode-hook 'set-newline-and-indent)
-
-
-
+;; Python settings
+(load "pythonsettings")
 
 
 

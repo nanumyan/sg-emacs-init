@@ -1,0 +1,68 @@
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+%%%%%% useful abbreviations 
+
+\newcommand{\RA}{\Rightarrow}
+\newcommand{\bbox}[1]{\mbox{\boldmath $#1$}}
+
+%%%%%% math functions
+\newcommand{\vecb}[1]{ \ensuremath{\matbf{#1}}}
+\newcommand{\mean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\epsilon}{\varepsilon}
+%%%%%% useful spaces
+
+\setlength{\leftmargini}{12pt}
+\setlength{\leftmarginii}{12pt}
+\setlength{\leftmarginiii}{12pt}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{-10pt}
+% \setlength{\topsep}{-9pt}
+% \setlength{\partopsep}{-9pt}
+%\setlength{\parskip}{0pt}
+
+
+%%%%%%%%%%% colors
+
+\definecolor{cbf}{RGB}{199,100,95}%{163,15,0}
+\definecolor{Blue}{RGB}{199,100,95}%{163,15,0}
+\definecolor{cem}{RGB}{199,100,95}%{163,15,0}
+\definecolor{c-emph}{RGB}{199,100,95}%{163,15,0}
+\definecolor{c-bf}{RGB}{199,100,95}%{163,15,0}
+\newcommand{\cbl}{\color{blue}}
+\newcommand{\cb}{\color{black}}
+\newcommand{\cbf}{\color{cbf}}
+\newcommand{\cem}{\color{cbf}}
+
+
+
+%\selectcolormodel{cmyk}
+\definecolor{sgdark}{HTML}{880000}
+\definecolor{sgmid}{HTML}{CC3311}
+\definecolor{sglight}{HTML}{FF4422}
+\definecolor{sgbg}{HTML}{FEF3EC}
+\definecolor{sgcomp2}{HTML}{106180}
+\definecolor{sgcomp1}{HTML}{70BA10}
+\definecolor{goodfit}{HTML}{C9FF82}
+\definecolor{goodishfit}{HTML}{FFFFAD}
+
+
+\tikzstyle{article}=[draw,circle,sgdark,fill=sglight, inner sep=0pt, minimum width=2mm]
+\tikzstyle{articlenew}=[draw,circle,sgdark,fill=sgcomp1, inner sep=0pt, minimum width=2mm]
+\tikzstyle{author}=[draw,circle,sgmid,fill=sglight, inner sep=0pt, minimum width=2mm]
+\tikzstyle{authornew}=[draw,circle,sgmid,fill=sgcomp1, inner sep=0pt, minimum width=2mm]
+\tikzstyle{cit}=[draw,sgdark]
+\tikzstyle{collab}=[draw,sgmid]
+
+\tikzset{
+    position/.style args={#1:#2 from #3}{
+        at=(#3.#1), anchor=#1+180, shift=(#1:#2)
+    }
+}
+
+\newcommand{\w}[2]{
+  w[#2 \,|\, #1]
+}
+\newcommand\stikz[1]{\tikz[baseline={([yshift=-.5ex]a.base)},scale = .7]{#1}}

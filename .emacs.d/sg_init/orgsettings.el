@@ -106,8 +106,8 @@
 [PACKAGES]
 [EXTRA]
 
-\\usepackage{./codestyle}
-\\usepackage{./special_commands}
+\\usepackage{codestyle}
+\\usepackage{special_commands}
 \\lstset{style=python}
 \\reference{Version of \\today}"
 	       ("\\section{%s}" . "\\section*{%s}")
@@ -128,8 +128,8 @@
 [NO-DEFAULT-PACKAGES]                
 [PACKAGES]
 
-\\usepackage{./codestyle}
-\\usepackage{./special_commands_beamer}
+\\usepackage{codestyle}
+\\usepackage{special_commands_beamer}
 \\lstset{style=python}
  \\usepackage{kmath}
  \\usepackage{eulervm}

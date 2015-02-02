@@ -1,0 +1,26 @@
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{black!3},
+  belowcaptionskip=0\baselineskip,
+  belowskip=0pt,
+  breaklines=true,
+  xleftmargin=0pt,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!20!black},
+  identifierstyle=\color{blue!60!black},
+  stringstyle=\color{orange!60!black},
+  columns=flexible,
+  keepspaces=true
+}
+\lstset{columns=flexible}
+\lstset{keepspaces=true}
+\makeatletter
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+\makeatother
+
+

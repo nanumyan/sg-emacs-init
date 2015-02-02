@@ -5,24 +5,46 @@
 (defvar required-packages
   '(
     ac-math
+    auto-complete-auctex
+
     org
     org-ac
     org-gcal
     org-bullets
+    cdlatex
+
     ipython
+    cython-mode
+    pyenv-mode
+    jedi
+    direx
+    jedi-direx
+    anaconda-mode
+
+    projectile
+    org-projectile
+    perspective
+    persp-projectile
+    
+    flx-ido
     dired+
     powerline
     writeroom-mode
     sublime-themes
+    ;smart-operator
     polymode
+    popup
     workgroups2
     ;yasnippet
+    monokai-theme
     nurumacs
+
+    google-this
   ) "a list of packages to ensure are installed at launch.")
 
 ;; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
+;                         ("gnu" . "http://elpa.gnu.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)

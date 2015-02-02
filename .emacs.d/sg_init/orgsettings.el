@@ -1,4 +1,9 @@
 
+
+;; Nice bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 ;;; load org
 (require 'org)
 (require 'ox-latex)
@@ -7,10 +12,6 @@
 (require 'org-ac)
 (org-ac/config-default)
 (add-to-list 'ac-modes 'org-mode)
-
-;; Nice bullets
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Google Calendar Sync
 ;; https://github.com/myuhe/org-gcal.el
@@ -83,6 +84,8 @@
 	 (:cache . "yes")))
 
 ;; Org-LaTeX export
+(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+
 (setq org-export-with-sub-superscripts nil)
 (setq org-export-date-timestamp-format "%B %d, %Y")
 (setq org-latex-listings t)
@@ -97,10 +100,11 @@
 
 (add-to-list 'org-latex-classes
 	     '("ethpaper"
-	       "\\documentclass{ETHpaper}
-                [NO-DEFAULT-PACKAGES]
-                [PACKAGES]
-                [EXTRA]
+"\\documentclass{ETHpaper}
+
+[NO-DEFAULT-PACKAGES]
+[PACKAGES]
+[EXTRA]
 
 \\usepackage{./codestyle}
 \\usepackage{./special_commands}
@@ -119,16 +123,16 @@
 
 (add-to-list 'org-latex-classes
 	     '("sg-ethclass"
-	       "\\documentclass{SG-ETHclass}
-\\setbeamertemplate{note page}{\\ \\\\[.3cm]
-\\textbf{\\color{c-bf} Notes:}\\\\%[0.1cm]
-{\\footnotesize %\\tiny 
-\\insertnote}}
-\\setbeamertemplate{navigation symbols}{}
-                [NO-DEFAULT-PACKAGES]                
-                [PACKAGES]
-% \\usepackage{kmath}
-\\usepackage{eulervm}
+"\\documentclass{SG-ETHclass}
+
+[NO-DEFAULT-PACKAGES]                
+[PACKAGES]
+
+\\usepackage{./codestyle}
+\\usepackage{./special_commands_beamer}
+\\lstset{style=python}
+ \\usepackage{kmath}
+ \\usepackage{eulervm}
 
 \\institute{Chair of Systems Design}
 \\newcommand{\\place}{place}
@@ -136,11 +140,11 @@
 \\newcommand{\\shorttitle}{shorttitle}
 \\newcommand{\\collaborators}{collaborators} 
 \\newcommand{\\event}{Agent-based Modelling of Social Systems}
-\\newcommand{\\coursepage}{\\footnotesize \\url{{http://www.sg.ethz.ch/teaching}}}
+\\newcommand{\\coursepage}{\\footnotesize \\url{http://www.sg.ethz.ch/teaching}}
 
 \\usetikzlibrary{calc,3d}
 \\usetikzlibrary{decorations.pathreplacing}
-                [EXTRA]"
+[EXTRA]"
                ("\\section\{%s\}" . "\\section*\{%s\}")
                ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
                ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))

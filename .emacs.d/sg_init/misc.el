@@ -36,8 +36,16 @@
 (toggle-diredp-find-file-reuse-dir 1)
 
 ;; smarter mini-buffer
-(require 'ido)
-(ido-mode t)
+;(require 'ido)
+;(ido-mode t)
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+
 
 ;; undo/redo window configuration
 (when (fboundp 'winner-mode)
@@ -70,3 +78,8 @@
 ;; PS printing options
 (setq ps-paper-type (quote a4))
 (setq ps-print-color-p nil)
+
+
+;; smart-operator
+;; '=' -> ' = '
+(require 'smart-operator)

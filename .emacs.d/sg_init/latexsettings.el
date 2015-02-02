@@ -66,18 +66,20 @@
 (ac-flyspell-workaround)
 
 ;;; BRACES
-(electric-pair-mode)
-(add-hook 'LaTeX-mode-hook
-              (lambda ()
-                (define-key LaTeX-mode-map "\"" 'electric-pair)
-                (define-key LaTeX-mode-map "\'" 'electric-pair)
-                (define-key LaTeX-mode-map "(" 'electric-pair)
-                (define-key LaTeX-mode-map "[" 'electric-pair)
-                (define-key LaTeX-mode-map "{" 'electric-pair)
-                (define-key LaTeX-mode-map "$" 'electric-pair)))
-(add-hook 'LaTeX-mode-hook
-          '(lambda ()
-            (define-key LaTeX-mode-map (kbd "$") 'self-insert-command)))
+;(electric-pair-mode)
+;(add-hook 'LaTeX-mode-hook
+;              (lambda ()
+;                (define-key LaTeX-mode-map "\"" 'electric-pair)
+;                (define-key LaTeX-mode-map "\'" 'electric-pair)
+;                (define-key LaTeX-mode-map "(" 'electric-pair)
+;                (define-key LaTeX-mode-map "[" 'electric-pair)
+;                (define-key LaTeX-mode-map "{" 'electric-pair)
+;                (define-key LaTeX-mode-map "$" 'electric-pair)))
+;(add-hook 'LaTeX-mode-hook
+;          '(lambda ()
+;            (define-key LaTeX-mode-map (kbd "$") 'self-insert-command)))
+(add-hook 'LaTeX-mode-hook 'electric-pair-mode)
+
 
 (require 'cdlatex)
 (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)

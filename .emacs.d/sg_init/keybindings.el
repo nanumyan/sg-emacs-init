@@ -1,8 +1,17 @@
 ;; RET indents
 (define-key global-map (kbd "RET") 'reindent-then-newline-and-indent)
 
+
+;; Calculator
+(autoload 'calculator "calculator" "Run the Emacs calculator." t)
+  (global-set-key [(control return)] 'calculator)
+
 ;; trigger autocompletion with Win+TAB
 ;(ac-set-trigger-key "\s-TAB")
+
+;; PS printing
+(global-set-key [f12]  'ps-print-buffer)
+(global-set-key [f8]  'ps-print-region)
 
 ;; org-mode
 (global-set-key "\C-cl" 'org-store-link)
@@ -33,6 +42,11 @@
 (global-set-key [f9] 'writeroom-mode)
 
 
+;; Google this
+(require 'google-this)
+(global-set-key (kbd "C-x g") 'google-this-mode-submap)
+
+
 ;; list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
@@ -55,3 +69,11 @@
 			    (find-file-noselect 
 			     (dired-get-file-for-visit)))
 	 (select-window dired-window)))))
+
+
+
+;; ORG-MODE: Enter key executes newline-and-indent
+(defun set-newline-and-indent ()
+  "Map the return key with `newline-and-indent'"
+  (local-set-key (kbd "RET") 'newline-and-indent))
+(add-hook 'org-mode-hook 'set-newline-and-indent)

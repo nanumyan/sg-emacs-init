@@ -1,27 +1,33 @@
 
-;; default font
-(set-default-font '(:family "Droid Sans Mono-14" :height 110)) ; "Source Code Pro"
-
 ;; Use variable width font faces in current buffer
 (defun my-buffer-face-mode-variable ()
 "Set font to a variable width (proportional) fonts in current buffer"
 (interactive)
-(setq buffer-face-mode-face '(:family "Noto Sans" :height 110))
+(setq buffer-face-mode-face  '(:family "Noto Sans" :height 100))
 (buffer-face-mode))
 
 ;; Use monospaced font faces in current buffer
 (defun my-buffer-face-mode-fixed ()
 "Sets a fixed width (monospace) font in current buffer"
 (interactive)
-(setq buffer-face-mode-face '(:family "Droid Sans Mono" :height 110)) ;; Source Code Pro
+(setq buffer-face-mode-face '(:family "Droid Sans Mono" :height 100)) ;; Source Code Pro
 (buffer-face-mode))
 
-;; Set default font faces for some modes
-(add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
-(add-hook 'Info-mode-hook 'my-buffer-face-mode-variable)
-(add-hook 'text-mode-hook 'my-buffer-face-mode-variable)
+;; default font
+(set-default-font '(:family "Droid Sans Mono" :height 100))
+(add-to-list 'initial-frame-alist '(font . "Droid Sans Mono:height=100"))
+(add-to-list 'default-frame-alist '(font . "Droid Sans Mono:height=100"))
+(my-buffer-face-mode-fixed)
 
-(add-hook 'python-mode-hook 'my-buffer-face-mode-fixed)
+;; Set default font faces for some modes
+;(add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
+(add-hook 'Info-mode-hook 'my-buffer-face-mode-variable)
+;(add-hook 'text-mode-hook 'my-buffer-face-mode-variable)
+
+
+;; Visual-line-mode by default:
+(add-hook 'rst-mode (lambda ()  (visual-line-mode 1)))
+
 
 ;; Enable syntax highlighting when editing code.
 (global-font-lock-mode t) 
@@ -32,6 +38,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (show-paren-mode 1)
+ (setq show-paren-style 'expression)
 (display-time-mode t)
 (column-number-mode t)
 
@@ -39,7 +46,8 @@
 (setq inhibit-startup-message t)
 
 ;; theme from =sublime-themes=
-(load-theme 'spolsky t) ; I like spolsky and hickey
+(load-theme 'monokai t) ; I like spolsky and hickey
+
 
 ;; disable the sound
 (setq visible-bell 1)
@@ -63,16 +71,15 @@
 ;(add-to-list 'default-frame-alist '(alpha 100 90))  ;'(<active> [<inactive>])
 
 
-
 ;; mode-line theme
 (require 'powerline)
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil
                     :family "Noto Sans"
-                    :foreground "Grey85"
-                    :background "Grey15"
+;                    :foreground "Grey85"
+;                    :background "Grey15"
                     :box nil)
-(setq powerline-arrow-shape 'curve)
+;(setq powerline-arrow-shape 'curve)
 
 ;; smooth scrolling
 (require 'nurumacs)
